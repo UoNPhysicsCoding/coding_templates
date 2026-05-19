@@ -1,0 +1,59 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvInTerminal": true,
+    "jupyter.jupyterServerType": "local",
+    "python.analysis.typeCheckingMode": "basic",
+    
+    // Minimises noisy notification pop-ups from extensions
+    "workbench.banner.enabled": false,
+    
+    // Hides the minimap on the right side of the code editor to maximise screen space
+    "editor.minimap.enabled": false,
+    
+    // Prevents advanced source control decorations from cluttering the file list
+    "scm.decorations.enabled": false,
+
+        "files.exclude": {
+        "**/.*": true,
+        "**/.venv": true,
+        "**/__pycache__": true,
+        "uv.lock":true,
+
+    },
+
+
+    //Interactive window setup
+    "jupyter.execSelectionInteractive": true,
+    "python.REPL.sendToNativeREPL": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.interactiveWindow.creationMode": "perNotebook",
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "notebook.cellToolbarLocation": {
+        "default": "right"
+    },
+
+    // Keeps the primary file explorer and internal tool tabs to a predictable width
+    "workbench.editor.editorGroupsMode": "grid",
+    // Prevents the Interactive Window from hijacking focus and expanding to fill the editor space
+    "workbench.editor.openSideBySideDirection": "right",
+    // Forces the Jupyter variable viewer to open inside a dedicated panel rather than a full editor tab
+    "notebook.experimental.useSeparateVariablesView": true,
+    // Forces the bottom panel to occupy a sensible, smaller region instead of blowing up to full height
+    "workbench.panel.opensMaximized": "never",
+    // Clamps the default vertical height of the terminal panel when it first opens (in pixels)
+    "terminal.integrated.defaultHeight": 350,
+    // Prevents the terminal from pushing past the center grid boundary
+    "workbench.panel.defaultLocation": "bottom",
+    // Limits the terminal panel's horizontal sprawl if it ever gets dragged to the side
+    "terminal.integrated.defaultWidth": 400,
+    // Some tweaks to remove visual complexity of editor
+    "workbench.statusBar.visible": false,
+    "workbench.layoutControl.enabled": false,
+    "editor.breadcrumbs.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.guides.indentation": false,
+    "editor.foldEndControls": "never",
+    "editor.showFoldingControls": "never",
+    "editor.lightbulb.enabled": "off",
+    "editor.codeLens": false,
+}
