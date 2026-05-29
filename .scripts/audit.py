@@ -1,28 +1,25 @@
-import sys, subprocess, datetime, json, os
-
-def get_meaningful_lines(file_path):
-    ext = os.path.splitext(file_path)[1]
-    try:
-        lines = []
-        if ext == '.ipynb':
-            with open(file_path, 'r', encoding='utf-8') as f:
-                nb = json.load(f)
-                for cell in nb.get('cells', []):
-                    if cell.get('cell_type') == 'code':
-                        lines.extend(cell.get('source', []))
-        elif ext in ['.py', '.md']:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-        
-        # This is the fix: Only count lines that aren't just empty or whitespace
-        meaningful_lines = [l for l in lines if l.strip()]
-        return len(meaningful_lines)
-    except Exception:
-        return 0
+import sys, subprocess, os
 
 file_path = sys.argv[1]
-timestamp = datetime.datetime.now().strftime('%H:%M:%S')
-line_count = get_meaningful_lines(file_path)
 
+# 1. Stage the file (this makes the file available for 'git diff')
 subprocess.run(['git', 'add', file_path], capture_output=True)
-subprocess.run(['git', 'commit', '-m', f'Time: {timestamp} | Num_newlines: {line_count}'], capture_output=True)
+
+# 2. Get the diff summary for this specific file
+# --numstat outputs: <added_lines> <deleted_lines> <filename>
+result = subprocess.run(
+    ['git', 'diff', '--cached', '--numstat', file_path], 
+    capture_output=True, text=True
+)
+
+# 3. Parse the output (e.g., "50 10 path/to/file.py")
+output = result.stdout.strip().split('\t')
+added = int(output[0]) if len(output) > 2 else 0
+
+# 4. Only commit if lines were actually added
+if added > 0:
+    import datetime
+    timestamp = datetime.datetime.now().strftime('%H:%M:%S')
+    
+    # We commit with the 'added' count in the message
+    subprocess.run(['git', 'commit', '-m', f'Time: {timestamp} | LinesAdded: {added}'])
