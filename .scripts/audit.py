@@ -30,7 +30,7 @@ timestamp = datetime.datetime.now().strftime('%H:%M:%S')
 line_count = get_code_lines(file_path)
 
 subprocess.run(['git', 'add', file_path], capture_output=True)
-result = subprocess.run(['git', 'commit', '-m', f'Time: {timestamp} | LOC: {line_count}'], capture_output=True)
+result = subprocess.run(['git', 'commit', '-m', f'Time: {timestamp} | Num_newlines: {line_count}'], capture_output=True)
 
 if result.returncode == 0:
     subprocess.run(['git', 'push'], capture_output=True)
