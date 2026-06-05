@@ -22,17 +22,6 @@
       }
     },
     {
-      "label": "Debug Connection",
-      "type": "shell",
-      "command": "echo '--- CONNECTION SUCCESSFUL: Task Triggered ---'",
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared",
-        "focus": false
-      },
-      "problemMatcher": []
-    },
-    {
       "label": "Audit on Save",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/bin/python .scripts/audit.py '${file}'",
