@@ -1,6 +1,6 @@
 {
   // --- 1. Academic & Environment Setup ---
-  "academicCohort": "year1",
+  "academicCohort": "year4q",
   "python.venvFolders": [],
   "python.venvPath": [],
   "python.analysis.typeCheckingMode": "basic",
