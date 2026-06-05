@@ -1,41 +1,36 @@
 {
-  // ==========================================
-  // GROUP 1: UV, PYTHON, & KERNEL CONFIGURATION
-  // ==========================================
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-  "python.analysis.typeCheckingMode": "basic",
+  "academicCohort": "year1",
   "jupyter.kernels.excludePythonEnvironments": [
     "/usr/bin/python*",
     "/usr/local/bin/python*",
+    "${userHome}/AppData/Local/Programs/Python/*",
+    "${userHome}/.pyenv/**",
+    "${userHome}/miniconda3/**",
     "C:\\Python*",
-    "~\\AppData\\Local\\Programs\\Python\\*"
+    "D:\\Python*"
   ],
   "jupyter.interactiveWindow.creationMode": "perNotebook",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "right"
   },
-
-  // ==========================================
-  // GROUP 2: VSCODE APPEARANCE & CLUTTER CONTROL
-  // ==========================================
-  "window.restoreWindows": "none",
+  "python.venvFolders": [],
+  "python.venvPath": [],
+  "python.analysis.exclude": [
+    "**/miniconda3/**"
+  ],
   "window.zoomLevel": 1,
-
   "files.exclude": {
     "**/.*": false,
-    "**/.venv": true,
+    "**/.venv": false,
     "**/__pycache__": true,
-    "uv.lock": true
+    "uv.lock": true,
+    ".gitignore": false
   },
   "editor.minimap.enabled": false,
-  "scm.decorations.enabled": true,
-  "workbench.editor.editorGroupsMode": "grid",
   "workbench.editor.openSideBySideDirection": "right",
   "workbench.panel.opensMaximized": "never",
-  "terminal.integrated.defaultHeight": 350,
   "workbench.panel.defaultLocation": "bottom",
-  "terminal.integrated.defaultWidth": 400,
   "workbench.statusBar.visible": true,
   "workbench.layoutControl.enabled": false,
   "editor.stickyScroll.enabled": false,
@@ -44,63 +39,37 @@
   "editor.lightbulb.enabled": "off",
   "editor.codeLens": false,
   "scm.diffDecorations": "none",
-
-  // ==========================================
-  // GROUP 3: EDITOR FUNCTIONALITY & AUTOMATION
-  // ==========================================
-  "workbench.startupEditor": "readme",
+  "python.analysis.typeCheckingMode": "basic",
+  "workbench.startupEditor": "none",
   "explorer.compactFolders": false,
   "editor.inlineSuggest.enabled": true,
   "git.enabled": true,
   "git.ignoreMissingGitWarning": true,
-  "scm.alwaysShowProviders": false,
- 
-  //Interactive prompt
-  "jupyter.variableExplorer.enabled": false,
   "jupyter.widgetScriptSources": [],
   "python.analysis.autoImportCompletions": false,
-  "python.analysis.packageIndexDeprecationTracker": false,
- 
-
-  // ==========================================
-  // GROUP 4: AI SETTINGS
-  // ==========================================
-  
-  // Limiting AI chat to the chat window. 
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
-    "markdown": false,
+    "markdown": false
   },
-  //"github.copilot.chat.agentsControl.enabled": false,
   "github.copilot.chat.organizationCustomAgents.enabled": false,
-  "github.copilot.chat.agents.enabled": false,
-  "github.copilot.chat.allowAgents": false,
+  "chat.agent.enabled": false,
+  "github.copilot.chat.agent.autoFix": false,
   "github.copilot.chat.claudeAgent.enabled": false,
   "github.copilot.chat.backgroundAgent.enabled": false,
   "github.copilot.chat.agent.backgroundTodoAgent.enabled": false,
   "github.copilot.chat.alternateGptPrompt.enabled": false,
-  "github.copilot.codeLens.enabled": false,
-
-  // To remove the AI features completely use this setting.
   "chat.disableAIFeatures": false,
-
-  
-
-  // ==========================================
-  // GROUP 5: AUTOMATED PROGRESS TRACKING (GITDOC)
-  // ==========================================
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 5000,
   "emeraldwalk.runonsave": {
-    "autoClearConsole": true,
-    "commands": [
-      {
-        "match": "(\\.py$|\\.ipynb$|\\.vscode|\\.scripts)",
-        "cmd": "uv run .scripts/audit.py '${file}'"
-      }
-    ]
-  },
-  //"github.copilot.chat.organizationCustomAgents.enabled": false,
-  //"chat.agentsControl.enabled": "hidden"
+  "autoClearConsole": false,
+  "commands": [
+    {
+      "match": "\\.py$",
+      "cmd": "uv run --no-project .scripts/audit.py",
+      "isAsync": false
+    }
+  ]
+}
 }
