@@ -61,7 +61,7 @@
   "github.copilot.chat.alternateGptPrompt.enabled": false,
   "chat.disableAIFeatures": false,
   "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 5000,
+  "files.autoSaveDelay": 60000,
   "emeraldwalk.runonsave": {
   "autoClearConsole": false,
   "commands": [
