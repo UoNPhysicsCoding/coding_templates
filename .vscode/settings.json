@@ -21,11 +21,12 @@
   ],
   "window.zoomLevel": 1,
   "files.exclude": {
+    "**/.git": false,
     "**/.*": false,
     "**/.venv": false,
     "**/__pycache__": true,
     "uv.lock": true,
-    ".gitignore": false
+    ".gitignore": true
   },
   "editor.minimap.enabled": false,
   "workbench.editor.openSideBySideDirection": "right",
@@ -61,15 +62,15 @@
   "github.copilot.chat.alternateGptPrompt.enabled": false,
   "chat.disableAIFeatures": false,
   "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 5000,
+  "files.autoSaveDelay": 30000,
   "emeraldwalk.runonsave": {
-  "autoClearConsole": false,
-  "commands": [
-    {
-      "match": "\\.py$",
-      "cmd": "uv run --no-project .scripts/audit.py",
-      "isAsync": false
-    }
-  ]
-}
+    "autoClearConsole": false,
+    "commands": [
+      {
+        "match": "\\.py$",
+        "cmd": "uv run --no-project .scripts/audit.py",
+        "isAsync": false
+      }
+    ]
+  }
 }
